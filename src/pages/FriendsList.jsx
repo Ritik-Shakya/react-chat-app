@@ -3,6 +3,15 @@ import Spinner from "../components/Spinner";
 import { useFriends } from "../features/home/useFriends"
 import FriendCard from "../components/FriendCard";
 import { useUser } from "../features/Authentication/useUser";
+import Search from "../components/Search";
+
+const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+`
 
 const Div = styled.div`
 display: grid;
@@ -31,12 +40,14 @@ const friendsName = friends.map((friend)=> friend.fullName);
 
 
     return (
-        <Div>
+        <Main>
+            <div> <Search /></div>
+           <Div>
           {
           userinFriends? otherFriends.map((friend)=><FriendCard friend={friend} key={friend.userId} />) :
           <h2>You have to be a friend first to start chatting, go to home and become friend there.</h2>
-            }
-        </Div>
+            }</Div>
+        </Main>
     )
 }
 

@@ -40,3 +40,12 @@ export async function getFriend(id) {
  if(error) throw new Error(error.message)
     return data;
 }
+
+export async function getFriendviaName (name) {
+    let { data, error } = await supabase
+  .from('friends')
+  .select("*").ilike('fullName', name);
+
+  if(error) throw new Error(error.message)
+    return data;  
+}
