@@ -1,7 +1,7 @@
 import { useUser } from "../features/Authentication/useUser";
 import Spinner from "./Spinner";
 import { useFriend } from "../features/home/useFriend";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { HiArrowRight } from "react-icons/hi";
 import { useChatsBySender } from "../features/chats/useChatsBySender";
 import { useChatsByReciever } from "../features/chats/useChatsByReciever";
@@ -9,8 +9,28 @@ import { useEffect, useRef, useState } from "react";
 import { useCreateChat } from "../features/chats/useCreateChat";
 import MessageBox from "./MessageBox";
 import { useSender } from "../features/home/useSender";
-import toast from "react-hot-toast";
 
+const rotate = keyframes`
+from {
+color: black;
+transform: rotate(0deg);
+}
+to{
+color: white;
+transform: rotate(360deg);
+}
+`
+
+const fadeInOut = keyframes`
+    from{
+       
+        color:white;
+    }
+    to{
+       
+        color:black;
+    }
+`
 
 const Div = styled.div`
     height: 80vh;
@@ -95,6 +115,16 @@ const Button = styled.button`
     }
 `
 
+const H3 = styled.h3`
+    animation: ${rotate} 2s 1;
+`
+
+const Em = styled.em`
+    animation: ${fadeInOut} 2s 3;
+    color:black;
+   
+`
+
 
 
 function Friend() {
@@ -141,7 +171,7 @@ function Friend() {
         <Div>
            <Div1> 
             <Img src={sender[0].avatar} alt=""/>
-            <h3>Sender : <em>{user.user_metadata.fullName}</em></h3>
+            <H3>Sender : <Em>{user.user_metadata.fullName}</Em></H3>
            
              
              </Div1>
@@ -157,7 +187,7 @@ function Friend() {
            </Div2>
            <Div3> 
             <Img src={friend[0].avatar} alt=""/>
-            <h3>Reciever : <em>{friend[0].fullName}</em></h3>
+            <H3>Reciever : <Em>{friend[0].fullName}</Em></H3>
             
 
             </Div3>

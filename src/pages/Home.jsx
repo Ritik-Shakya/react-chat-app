@@ -2,8 +2,30 @@ import { useUser } from "../features/Authentication/useUser";
 import { useFriends } from "../features/home/useFriends";
 import Spinner from "../components/Spinner";
 import {useCreateFriend} from "../features/home/useCreateFriend"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { useForm } from "react-hook-form";
+
+const slideIn = keyframes`
+from{
+    translate: 150vh 0;
+    scale: 200% 1;
+}
+to {
+    translate: 0 0;
+    scale: 100% 1;
+}
+`
+
+const rotate = keyframes`
+from {
+color: black;
+transform: rotate(0deg);
+}
+to{
+color: white;
+transform: rotate(360deg);
+}
+`
 
 const Form = styled.form`
     border:1px solid var(--color-brand-800);
@@ -51,6 +73,8 @@ const Img = styled.img`
     border-radius: 50%;
     padding: 5px;
     border:none;
+    &:hover {
+        animation: ${rotate} 3s 1;         }
 `
 const Div2 = styled.div`
     display: flex;
@@ -62,7 +86,15 @@ const Div2 = styled.div`
     border: 2px dotted black;
     margin:5px;
 `
-
+const H2 = styled.h2 `
+    animation: ${slideIn} 2s 1;
+    &:hover {
+       color:white;
+    }
+`
+const Span = styled.span`
+    animation : ${rotate} 2s 1;
+`
 
 function Home() {
    
@@ -103,9 +135,9 @@ function onSubmit (data) {
           
           <Div2>
           
-            <h2 style={{padding:"10px"}}>Hello , {user.user_metadata.fullName}</h2>
+            <h2 style={{padding:"10px"}}>Hello ,<H2> {user.user_metadata.fullName}</H2></h2>
            <h4>Connect to your friends</h4>
-           <p>This service is used by {otherFriends.length} other people</p>
+           <p>This service is used by <Span> {otherFriends.length}</Span> other people</p>
            <h3>To chat you must become a friend.</h3>
              </Div2>
 
