@@ -26,7 +26,7 @@ export async function Login ({email, password}) {
     if(error) throw new Error (error.message);
   }
 
-  export async function signupAndcreateFriend({ fullName, email, password,friend}) {
+  export async function signupAndcreateFriend({ fullName, email, password}) {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
