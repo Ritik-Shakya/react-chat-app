@@ -111,7 +111,9 @@ function Home() {
     const userAsFriend = friends.filter((friend)=> 
         friend.fullName == user.user_metadata.fullName
     );
+
     
+    // console.log(process.env.VITE_SUPABASE_URL);
 
 
 
