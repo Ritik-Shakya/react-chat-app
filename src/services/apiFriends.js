@@ -1,6 +1,6 @@
 import supabase from "./supabase";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseUrl = "https://vhbqdebzwitgkiedgkoc.supabase.co";
 
 export async function getFriends() {
     const {data,error} = await supabase.from("friends").select("*");
