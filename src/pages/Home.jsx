@@ -50,13 +50,12 @@ const Input = styled.input`
 background-color: #1c1e8886;
 border: none;
 outline: none;
-
 margin:5px;
 border-radius: 10px;
 padding: 4px;
 `
 
-    const Div= styled.div`
+const Div= styled.div`
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -112,7 +111,6 @@ function Home() {
     const userAsFriend = friends.filter((friend)=> 
         friend.fullName == user.user_metadata.fullName
     );
-    console.log(userAsFriend)
     
 
 
@@ -123,7 +121,7 @@ function Home() {
 
    
 function onSubmit (data) {
-     creatingFriend({fullName:user.user_metadata.fullName, avatar:data.avatar[0], userId:id});
+     creatingFriend({fullName:user.user_metadata.fullName, avatar:data?.avatar[0], userId:id});
     
 }
    
@@ -131,7 +129,7 @@ function onSubmit (data) {
     
     return (
         <Div>
-            {userAsFriend.length !== 0?<Img src={ userAsFriend[0].avatar } alt={user.user_metadata.fullName} />:<Img src="avatar.png" alt="" /> }
+            {userAsFriend.length !== 0?<Img src={ userAsFriend[0].avatar === null?"avatar.png" : userAsFriend[0].avatar} alt={user.user_metadata.fullName} />:<Img src="avatar.png" alt="" /> }
           
           <Div2>
           
@@ -146,7 +144,7 @@ function onSubmit (data) {
            : <Form onSubmit={handleSubmit(onSubmit)}>
            <label>Upload your avatar</label>
            <Input type="file" name="avatar" id="avatar" {...register("avatar")}/>
-           <Button type="submit">Become Friend</Button>
+           <Button  type="submit">Become Friend</Button>
            </Form>}
            
            

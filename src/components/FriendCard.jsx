@@ -40,7 +40,7 @@ function FriendCard({friend}) {
 
     return (
         <Div onClick={handleClick}>
-            <Img src={friend.avatar} alt=""/>
+            <Img src={friend.avatar=== null?"avatar.png":friend.avatar} alt=""/>
             {friend.fullName}
             
         </Div>

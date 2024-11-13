@@ -53,8 +53,7 @@ function SignUp() {
 
 function handleSignUp(e) {
     e.preventDefault();
-    console.log(fullName,email,password,friend);
-    signUp({fullName,email, password,friend}, {
+  signUp({fullName,email, password,friend}, {
         onSettled:()=> {
             setFullName("");
             setEmail("");

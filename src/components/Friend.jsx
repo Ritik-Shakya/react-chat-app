@@ -170,7 +170,7 @@ function Friend() {
     return (
         <Div>
            <Div1> 
-            <Img src={sender[0].avatar} alt=""/>
+            <Img src={sender[0].avatar === null?"/avatar.png":sender[0].avatar} alt=""/>
             <H3>Sender : <Em>{user.user_metadata.fullName}</Em></H3>
            
              
@@ -186,7 +186,7 @@ function Friend() {
             </Divb>
            </Div2>
            <Div3> 
-            <Img src={friend[0].avatar} alt=""/>
+            <Img src={friend[0].avatar=== null ? "/avatar.png":friend[0].avatar} alt=""/>
             <H3>Reciever : <Em>{friend[0].fullName}</Em></H3>
             
 
